@@ -1,0 +1,49 @@
+mat-sidenav-container {
+  height: 100%;
+}
+
+// mat-sidenav, mat-sidenav-content {
+//   padding: 16px;
+// }
+
+mat-sidenav {
+  background-color: rgb(30, 64, 87);
+  width: 200px;
+}
+
+btn-blue {
+  background-color: hsl(113, 38%, 50%);
+  width: 150px;
+  color: #fff;
+  border-radius: 2px;
+  font-size: 13px;
+  padding: 10px;
+}
+
+.btn-blue:hover {
+  background-color: #000;
+  cursor: pointer
+}
+
+
+// .mat-drawer-inner-container {
+//   width: 100% !important;
+//   height: 100% !important;
+//   overflow: hidden !important;
+//   -webkit-overflow-scrolling: touch !important;
+// }
+
+
+.mat-drawer-inner-container {
+  width: 100% !important;
+  height: 100% !important;
+  overflow: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+// .nb-theme-default nb-layout-header nav {
+//   color: #222b45;
+//     box-shadow: 0 0.5rem 1rem 0 rgb(44 51 73 / 10%);
+//     height: 3.75rem !important;
+//     padding: 1.25rem;
+// }

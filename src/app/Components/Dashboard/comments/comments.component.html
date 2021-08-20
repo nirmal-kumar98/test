@@ -1,0 +1,189 @@
+<div class="msger" style="overflow-x: hidden" *ngIf="message">
+    <div class="msger-header">
+      <div class="msger-header-title">
+          <div class="row" style="margin-left: 0px;">
+            <div class="col-md-9" style="margin-top: 6px;">
+              <div class="row">
+                <div class="col-md-2">
+                    <nb-user
+                      *ngIf="message.category === 'event'" 
+                      size="medium"
+                      name="Manikandan B"
+                      title="Engineer"
+                      showName=false
+                      showTitle=false
+                      picture="https://www.freeiconspng.com/thumbs/calendar-icon-png/calendar-icon-png-4.png"
+                  ></nb-user>
+                  <nb-user
+                      *ngIf="message.category === 'announcement'" 
+                      size="medium"
+                      name="Manikandan B"
+                      title="Engineer"
+                      showName=false
+                      showTitle=false
+                      picture="https://www.nicepng.com/png/detail/902-9026383_icon-megaphone-marketing.png"
+                  ></nb-user>
+                  <nb-user
+                      *ngIf="message.category === 'reminder'" 
+                      size="medium"
+                      name="Manikandan B"
+                      title="Engineer"
+                      showName=false
+                      showTitle=false
+                      picture="https://icon-library.com/images/reminder-icon/reminder-icon-15.jpg"
+                  ></nb-user>
+                </div>
+                <div class="col-md-10">
+                  <p style="letter-spacing: 1px; font-weight: bold; margin-left: 20px; margin-top: 10px;">{{ message.subject }}</p> 
+                </div>
+              </div>
+                
+            </div>
+            <!-- <div class="col-md-" style="margin-top: 15px;">
+                <p style="letter-spacing: 1px; font-weight: bold;">{{ message.subject }}</p> 
+            </div> -->
+            <div class="col-md-3" style="margin-top: 15px;">
+              <nb-icon icon="close" (click)="close()"></nb-icon>  
+            </div>
+          </div>
+      </div>
+      <!-- <div class="msger-header-options">
+        <span><i class="fas fa-cog"></i></span>
+      </div> -->
+    </div>
+
+    <hr>
+
+    
+      <p style="margin: 15px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">{{ message.descriptions }}</p>
+    
+
+      <hr> 
+
+      <div class="row">
+        <div class="col-md-6">
+          <h6 style="margin-left: 15px;">Comments</h6>
+        </div>
+        <div class="col-md-6">
+          <p class="text-disabled">{{ message.comments.length}} replies</p>
+        </div>
+      </div>
+  
+    <div class="msger-chat">
+      <div class="msg left-msg">
+        <!-- <div
+         class="msg-img"
+         style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"
+        ></div> -->
+  
+
+        <div class="msg-bubble">
+          <!-- <div class="msg-info">
+            <div class="msg-info-name">BOT</div>
+            <div class="msg-info-time">12:45</div>
+          </div> -->
+
+          <div class="msg-text mt-3" *ngFor="let cmt of message.comments">
+            <div class="row">
+              <div class="col-md-7">
+                <div class="row">
+                  <div class="col-md-3">
+                    <nb-user size="medium"
+                    [name]="cmt?.user?.firstName"
+                    title="Engineer"
+                    showName=false
+                    showTitle=false
+                    color="#c5f299"
+                    ></nb-user>
+                  </div>
+                  <div class="col-md-9" style="margin-top: 10px;">
+                    {{ cmt?.user?.firstName }} {{ cmt?.user?.lastName }} <span *ngIf="currentUserId === cmt?.user?._id"><nb-icon (click)="update(cmt)" style="margin-right: 15px;" icon="edit-outline"></nb-icon></span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-5">
+                <p class="text-disabled">{{ cmt.createdDate | date: 'short' }}</p>
+              </div>
+            </div>
+            <div>
+              <p class="mt-3" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+                {{ cmt.message }}
+              </p>
+              
+            </div>
+            <hr> 
+          </div>
+  
+          <!-- <div class="msg-text">
+            Hi, welcome to SimpleChat! Go ahead and send me a message.
+          </div>
+          <div class="msg-text">
+            Hi, welcome to SimpleChat! Go ahead and send me a message.
+          </div>
+          <div class="msg-text">
+            Hi, welcome to SimpleChat! Go ahead and send me a message.
+          </div>
+          <div class="msg-text">
+            Hi, welcome to SimpleChat! Go ahead and send me a message.
+          </div>
+          <div class="msg-text">
+            Hi, welcome to SimpleChat! Go ahead and send me a message.
+          </div>
+          <div class="msg-text">
+            Hi, welcome to SimpleChat! Go ahead and send me a message.
+          </div>
+          <div class="msg-text">
+            Hi, welcome to SimpleChat! Go ahead and send me a message.
+          </div>
+          <div class="msg-text">
+            Hi, welcome to SimpleChat! Go ahead and send me a message.
+          </div>
+          <div class="msg-text">
+            Hi, welcome to SimpleChat! Go ahead and send me a message.
+          </div>
+          <div class="msg-text">
+            Hi, welcome to SimpleChat! Go ahead and send me a message.
+          </div>
+          <div class="msg-text">
+            Hi, welcome to SimpleChat! Go ahead and send me a message.
+          </div>
+          <div class="msg-text">
+            Hi, welcome to SimpleChat! Go ahead and send me a message.
+          </div>
+          <div class="msg-text">
+            Hi, welcome to SimpleChat! Go ahead and send me a message.
+          </div>
+          <div class="msg-text">
+            Hi, welcome to SimpleChat! Go ahead and send me a message.
+          </div> -->
+        </div>
+      </div>
+  
+      <!-- <div class="msg right-msg">
+        <div
+         class="msg-img"
+         style="background-image: url(https://image.flaticon.com/icons/svg/145/145867.svg)"
+        ></div>
+  
+        <div class="msg-bubble">
+          <div class="msg-info">
+            <div class="msg-info-name">Sajad</div>
+            <div class="msg-info-time">12:46</div>
+          </div>
+  
+          <div class="msg-text">
+            You can change your name in JS section!
+          </div>
+        </div>
+      </div> -->
+    </div>
+  
+    <div class="msger-inputarea" *ngIf="!updateForm">
+      <input type="text" class="msger-input" [formControl]="comments" placeholder="Be a first comment">
+      <button (click)="sendComments()" nbInput type="submit" class="msger-send-btn">Send</button>
+    </div>
+    <div class="msger-inputarea" *ngIf="updateForm">
+      <input type="text" class="msger-input" [formControl]="comments" placeholder="Be a first comment">
+      <button (click)="updateComments()" nbInput type="submit" class="msger-send-btn">Update</button>
+    </div>
+</div>

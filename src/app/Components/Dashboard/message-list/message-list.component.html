@@ -1,0 +1,75 @@
+<!-- <p>message-list works!</p>
+<button (click)="OpenList()">List</button> -->
+
+<!-- <div style="overflow-y: scroll; height: 80%;" > -->
+
+    <nb-card style="margin: 20px" class="shadow-sm" *ngFor="let annoucement of annoucements" (click)="OpenList(annoucement)">
+        <nb-card-body>
+            <div class="row">
+                <div class="col-md-1">
+                    <nb-user size="large"
+                            [name]="annoucement.subject"
+                            title="Engineer"
+                            showName=false
+                            showTitle=false
+                            [color]="annoucement.color"
+                            >
+                    </nb-user>
+                </div>
+                <!-- https://icon-library.com/images/reminder-icon/reminder-icon-15.jpg -->
+                <!-- https://www.freeiconspng.com/thumbs/calendar-icon-png/calendar-icon-png-4.png -->
+                <!-- https://www.nicepng.com/png/detail/902-9026383_icon-megaphone-marketing.png -->
+                <div class="col-md-11" [ngStyle]="{'margin-left': sideView ? '0px' : '-35px' }">
+                    <div>
+                        <div>
+                            <p style="font-weight: bold; letter-spacing: 1px; float: left;">{{ annoucement.subject }} 
+                                <span *ngIf="annoucement.category === 'reminder'">
+                                    <img src="https://icon-library.com/images/reminder-icon/reminder-icon-15.jpg" style="width: 20px; margin-left: 10px;">
+                                </span>
+                                <span *ngIf="annoucement.category === 'event'">
+                                    <img src="https://www.freeiconspng.com/thumbs/calendar-icon-png/calendar-icon-png-4.png" style="width: 20px; margin-left: 10px;">
+                                </span>
+                                <span *ngIf="annoucement.category === 'announcement'">
+                                    <img src="https://www.nicepng.com/png/detail/902-9026383_icon-megaphone-marketing.png" style="width: 20px; margin-left: 10px;">
+                                </span>
+                            </p>
+                            <div style="float: right;">
+                                <span>
+                                    <!-- <nb-icon style="margin-right: 15px;" icon="edit-outline"></nb-icon> -->
+                                    <span><span style="margin-right: 4px;">{{ annoucement.comments.length }}</span><nb-icon style="margin-right: 15px;" status="primary" icon="message-circle-outline"></nb-icon></span>
+                                    <span class="" style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">{{ annoucement.createdDate | date: 'longDate' }}</span>
+                                </span>
+                            </div>
+                            <br>
+                        </div>
+    
+                        <br>
+    
+                        <div>
+                            <p style="margin-top: -6px; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">{{ annoucement.descriptions }}</p>
+                        </div>
+                    </div>
+    
+                    <div *ngIf="annoucement.category === 'event' || annoucement.category === 'reminder'">
+    
+                        <hr class="mt-4">
+                        <div class="row">
+    
+                            <div  [ngClass]="sideView ? 'col-md-4' : 'col-md-2'">
+                                <span *ngIf="annoucement.category === 'event'"><nb-icon icon="calendar-outline" status="warning"></nb-icon> <span style="margin-left: 10px">{{ annoucement.dateForEvent | date: 'longDate' }}</span></span>
+                                <span *ngIf="annoucement.category === 'reminder'"><nb-icon icon="calendar-outline" status="warning"></nb-icon> <span style="margin-left: 10px">{{ annoucement.expiryDateForReminder | date: 'longDate' }}</span></span>
+                            </div>
+    
+                            <div  [ngClass]="sideView ? 'col-md-8' : 'col-md-10'" *ngIf="annoucement.category === 'event'">
+                                <span><nb-icon icon="pin-outline" status="warning"></nb-icon><span style="margin-left: 10px;">{{ annoucement.location }}</span></span>
+                            </div>
+                        </div>
+    
+                    </div>
+                    
+                </div>
+            </div>
+        </nb-card-body>
+      </nb-card>
+
+<!-- </div> -->

@@ -1,0 +1,47 @@
+<div class="card2 card border-0 px-4 py-5">
+    <div class="row mb-1 px-3" style="margin-left: -30px;">
+        <h1 class="mb-0 mr-4 mt-2">Setup Your Application</h1>
+    </div>
+
+    <div class="row px-3 mb-4" style="margin-left: -30px;">
+        <p style="color: #646566;">To make a workspace from scratch, please confirm your email address.</p> 
+    </div>
+
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+
+        <div class="row px-3 mt-4"> 
+            <label class="mb-1">
+                <p class="mb-0" style="color: #abacad; margin: -10px;">Company Name</p>
+            </label> <input class="mb-4" (input)="companyNameChange($event.target.value)" formControlName="companyName" type="text" name="email" placeholder="Enter your company name"> 
+        </div>
+    
+        <div class="row px-3 mt-4">
+    
+            <div class="col-md-6">
+                <label class="mb-1">
+                    <p class="mb-0" style="color: #abacad; margin: -10px;">Location</p>
+                </label> <input formControlName="location" style="margin-left: -10px;" class="mb-4" type="text" name="email" placeholder="John"> 
+            </div>
+    
+            <div class="col-md-6">
+                <label class="mb-1">
+                    <p class="mb-0" style="color: #abacad; margin: -10px;">No. of Employees</p>
+                </label> <input formControlName="noOfEmployees" class="mb-4" style="margin-left: -10px;" type="text" name="email" placeholder="0"> 
+            </div>
+    
+        </div>
+    
+        <div class="row px-3 mt-4">
+    
+            <label class="mb-1">
+                <p class="mb-0" style="color: #abacad; margin: -10px;">Domain Name</p>
+            </label> <input formControlName="domainName" class="mb-4" type="text" name="email" placeholder="Customize your domain name"> 
+    
+        </div>
+        
+       
+        <div class="row mb-3 px-3 mt-3"> <button type="submit" [ngClass]="{'disabled': registerForm.valid !== true}" class="btn btn-blue text-center">Next</button> </div>    
+
+    </form>
+    
+</div>

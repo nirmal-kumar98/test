@@ -1,0 +1,160 @@
+<div class="card border-0 px-4" style="padding-top: 2rem;">
+
+    <div class="row mb-1 px-3" style="margin-left: -30px;">
+        <p class="mb-0" style="font-weight: bold;">Add New Announcement</p>
+    </div>
+    
+    <form [formGroup]="annoucementForm" (ngSubmit)="submit()">
+
+        <div class="row px-3 mt-5"> 
+            <p class="mb-0" style="color: #abacad; margin: -10px; font-size: 13px; letter-spacing: 2px;">Subject</p>
+            <input formControlName="subject" class="mb-4"  type="text" name="email" placeholder="Enter the Subject"> 
+        </div>
+
+        <div class="row px-3 mt-4"> 
+            <p class="mb-0" style="color: #abacad; margin: -10px; font-size: 13px; letter-spacing: 2px;">Select Category</p>
+
+            <div class="col-md-4 mt-2" style="margin-left: -10px;">
+
+                <button (click)="ButtonColorChange('announcement')" 
+                    type="button"
+                    nbButton 
+                    shape="round" 
+                    size="tiny" 
+                    class="buttons"
+                    [ngStyle]="{'background-color': annocementBtn ? 'hsl(113, 38%, 50%)' : '#edf1f7', 'color': annocementBtn ? 'whitesmoke' : 'black', 'letter-spacing': eventBtn ? '2px': '0px', 'width': eventBtn ? '120px' : '110px'  }">
+                    Announcement
+                </button>
+
+            </div>
+
+            <div class="col-md-4 mt-2">
+
+                <button (click)="ButtonColorChange('event')" 
+                    type="button"
+                    nbButton 
+                    shape="round" 
+                    size="tiny" 
+                    class="buttons"
+                    [ngStyle]="{'background-color': eventBtn ? 'hsl(113, 38%, 50%)' : '#edf1f7', 'color': eventBtn ? 'whitesmoke' : 'black', 'letter-spacing': eventBtn ? '2px': '0px', 'width': eventBtn ? '120px' : '110px'  }">
+                    Event</button>
+            </div>
+
+            <div class="col-md-4 mt-2">
+                <button type="button" (click)="ButtonColorChange('reminder')" 
+                    nbButton 
+                    shape="round" 
+                    size="tiny" 
+                    class="buttons"
+                    [ngStyle]="{'background-color': reminderBtn ? 'hsl(113, 38%, 50%)' : '#edf1f7', 'color': reminderBtn ? 'whitesmoke' : 'black', 'letter-spacing': eventBtn ? '2px': '0px', 'width': eventBtn ? '120px' : '110px'  }">
+                    Reminder</button>
+            </div> 
+        </div>
+
+        <div class="row mt-4" *ngIf="reminderBtn">
+
+            <div class="col-md-6 px-3">
+                <p class="mb-0" style="color: #abacad; font-size: 13px; letter-spacing: 2px;">Expires On</p>
+                <input formControlName="expiryDateForReminder" type="date">
+            </div>
+
+        </div>
+
+        <div class="row mt-4" *ngIf="eventBtn">
+
+            <div class="col-md-6 px-3">
+                <p class="mb-0" style="color: #abacad; font-size: 13px; letter-spacing: 2px;">Date</p>
+                <input formControlName="dateForEvent" type="date">
+            </div>
+
+            <div class="col-md-6">
+                <p class="mb-0" style="color: #abacad; font-size: 13px; letter-spacing: 2px;">Date</p>
+                <input formControlName="timeForEvent" type="time">
+            </div>
+
+            <p style="color: #c0c3c7; font-size: 13px; letter-spacing: 2px;">+ Add it to google Calendar</p>
+
+        </div>
+
+        <div class="row px-3 mt-4" *ngIf="eventBtn"> 
+            <p class="mb-0" style="color: #abacad; margin: -10px; font-size: 13px; letter-spacing: 2px;">Location</p>
+            <input formControlName="location" class="mb-4"  type="text" name="email" placeholder="Enter the location"> 
+        </div>
+
+
+        <div class="row px-3 mt-4"> 
+            <p class="mb-0" style="color: #abacad; margin: -10px; font-size: 13px; letter-spacing: 2px;">Descriptions</p>
+            <textarea formControlName="description" class="mb-4"  type="text" name="email" placeholder="Enter the Descriptions"></textarea> 
+        </div>
+
+        <div class="row px-3 mt-3"> 
+            
+            <p class="mb-0" style="color: #abacad; margin: -10px; font-size: 13px; letter-spacing: 2px;">Notify To</p>
+
+
+            <input placeholder="Enter multiple email id and separated by commans and @"
+                        [matAutocomplete]="auto"
+                        [formControl]="myControl"
+                        [matChipInputFor]="chipList"
+                        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                        [matChipInputAddOnBlur]="addOnBlur"
+                        (matChipInputTokenEnd)="add2($event)"
+                        >
+
+                        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                            <mat-option #matOptionValue id="matOption" (click)="add(option)" *ngFor="let option of filteredOptions | async" [value]="option">
+                              {{option}}
+                            </mat-option>
+                          </mat-autocomplete>
+
+            <mat-chip-list class="mt-3" #chipList aria-label="Fruit selection" style=" margin-left: -10px;">
+                <mat-chip style="background-color: #edf1f7; color: black;" *ngFor="let user of users" [selectable]="selectable"
+                        [removable]="removable" (removed)="remove(user)">
+                {{user.emailId}}
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+            </mat-chip-list>
+
+        </div>
+        
+        <div class="row mb-3 px-3 mt-5"> 
+            <div class="col-md-2">
+
+            </div>
+            <div class="col-md-10">
+                <div class="row">
+                    <div class="col-md-6">
+                        <button type="button"  class="btn btn-blue2">Discard</button> 
+                    </div>
+                    <div class="col-md-6">
+
+                        <div *ngIf="annocementBtn && annoucementForm.get('subject').valid && annoucementForm.get('description').valid && users.length > 0">
+                            <button type="submit"  class="btn btn-blue2">Send</button> 
+                        </div>
+
+                        <!-- <div *ngIf="!annocementBtn || !annoucementForm.get('subject').valid || !annoucementForm.get('description').valid || !(users.length > 0)">
+                            <button type="submit"  class="btn btn-blue2 disabled">Send</button> 
+                        </div> -->
+
+                        <div *ngIf="eventBtn && annoucementForm.get('subject').valid && annoucementForm.get('description').valid && users.length > 0 && annoucementForm.get('dateForEvent').valid && annoucementForm.get('timeForEvent').valid && annoucementForm.get('location').valid">
+                            <button type="submit"  class="btn btn-blue2">Send</button> 
+                        </div>
+
+                        <!-- <div *ngIf="!annocementBtn && !eventBtn || !annoucementForm.get('subject').valid || !annoucementForm.get('description').valid || !(users.length > 0) || !annoucementForm.get('dateForEvent').valid || !annoucementForm.get('timeForEvent').valid || !annoucementForm.get('location').valid">
+                            <button type="submit" *ngIf="" class="btn btn-blue2 disabled">Send event</button> 
+                        </div> -->
+
+                        <div *ngIf="reminderBtn && annoucementForm.get('subject').valid && annoucementForm.get('description').valid && users.length > 0 && annoucementForm.get('expiryDateForReminder').valid">
+                            <button type="submit"  class="btn btn-blue2">Send</button> 
+                        </div>
+
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+        

@@ -1,1 +1,55 @@
+@import 'themes';
+
+@import '~@nebular/theme/styles/globals';
+
+@include nb-install() {
+  @include nb-theme-global();
+};
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.nb-theme-default nb-layout .layout .layout-container .content .columns nb-layout-column { 
+  padding: 0rem 0rem 0rem !important;
+}
+
+.nb-theme-default nb-layout-header nav {
+  color: #222b45;
+    box-shadow: 0 0.5rem 1rem 0 rgb(44 51 73 / 10%);
+    height: 3.40rem !important; 
+    // 4.75
+    padding: 1.25rem;
+}
+
+
+// .nb-theme-default nb-user.size-large .user-name {
+//   font-size: 0.9375rem !important;
+//   line-height: 1.25rem !important;
+//   display: none !important;
+// }
+
+// .nb-theme-default nb-user.size-large .user-title {
+//   font-size: 0.8125rem !important;
+//   line-height: 1.125rem !important;
+//   display: none !important;
+// }
+
+
+// .mat-drawer-inner-container {
+//   width: 100% !important;
+//   height: 100% !important;
+//   overflow: hidden !important;
+//   -webkit-overflow-scrolling: touch !important;
+// }
+
+.mat-drawer:not(.mat-drawer-side) {
+  position: fixed;
+}
+
+.mat-drawer-backdrop {
+  position: fixed !important;
+}
+
+
+

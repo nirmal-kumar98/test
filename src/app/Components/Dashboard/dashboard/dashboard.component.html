@@ -1,0 +1,33 @@
+<mat-sidenav-container>
+
+    <mat-sidenav #left mode="side" opened position="start" style="overflow: hidden;">
+        <app-left-sidenav></app-left-sidenav>
+    </mat-sidenav>
+
+    <mat-sidenav (closed)="onClose()" #rightSideBar position="end" [mode]="mode" style="width: 450px; background-color: white; position: fixed;">
+        <app-right-sidenav  *ngIf="open" [openComponent]="openComponent" [messageToComments]="message" (closeSidebar)="closeComments($event)" (closeSidebarFromAn)="closeAnnoucement($event)"></app-right-sidenav>
+    </mat-sidenav>
+
+    <mat-sidenav-content style="overflow: hidden;">
+
+        <nb-layout-header>
+            <h6 class="mt-3">Announcement</h6>
+        </nb-layout-header>
+
+        <div class="row mt-3">
+
+            <div class="col-md-4">
+
+            </div>
+            <div class="col-md-4" [ngStyle]="{'margin-left': openSidbar ? '78%' : '85%'}">
+                <!-- <button (click)="right.open()" class="btn btn-sm btn-blue" style="outline: none; background: hsl(113, 38%, 50%)">+ Add Announcement</button> -->
+                <button (click)="openRight()" class="btn btn-sm btn-blue" style="outline: none; background: hsl(113, 38%, 50%); color: white">+ Add Announcement</button>
+            </div>
+
+        </div>
+        
+        <app-message-list (sendToParents)="openList($event)" [sideBarState]="openSidbar"></app-message-list>
+
+    </mat-sidenav-content>
+
+</mat-sidenav-container>

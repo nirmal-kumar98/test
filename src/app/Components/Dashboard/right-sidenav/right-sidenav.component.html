@@ -1,0 +1,2 @@
+<app-announcement-form *ngIf="annocementForm" (closeSidebar)="closeSidebars($event)"></app-announcement-form>
+<app-comments *ngIf="commentForm" [message]="messageToComments" (closes)="close($event)"></app-comments>

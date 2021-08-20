@@ -1,0 +1,63 @@
+<div class="card2 card border-0 px-4 py-5">
+    <div class="row mb-1 px-3" style="margin-left: -30px;">
+        <h1 class="mb-0 mr-4 mt-2">We've sent you a mail!</h1>
+        <!-- <div class="facebook text-center mr-3">
+            <div class="fa fa-facebook"></div>
+        </div>
+        <div class="twitter text-center mr-3">
+            <div class="fa fa-twitter"></div>
+        </div>
+        <div class="linkedin text-center mr-3">
+            <div class="fa fa-linkedin"></div>
+        </div> -->
+    </div>
+    <div class="row px-3 mb-4" style="margin-left: -30px;">
+        <p style="color: #646566;">To make a workspace from scratch, please confirm your email address.</p>
+        <!-- <div class="line"></div> <small class="or text-center">Or</small>
+        <div class="line"></div> -->
+    </div>
+    
+        
+        <form [formGroup]="otpForm">
+
+            <div class="row px-3 mt-4"> 
+                <p class="mb-4" style="color: #abacad; margin: -10px;">Enter your verification code</p>
+
+                <div class="col-md-2">
+                    <input (input)="boxOnChange($event.target.value, 'box2')" formControlName="box1" id="box1" style="margin-left: -10px; text-align: center; font-size: 18px;" class="mb-4 text-center" [ngClass]="{'form-control is-invalid': validation && first}" type="text" name="email" placeholder=""> 
+                </div>
+                <div class="col-md-2">
+                    <input (input)="boxOnChange($event.target.value, 'box3')" id="box2" formControlName="box2" style="margin-left: -10px; text-align: center; font-size: 18px;" class="mb-4 text-center" [ngClass]="{'form-control is-invalid': validation && first}" type="text" name="email" placeholder=""> 
+                </div>
+                <div class="col-md-2">
+                    <input (input)="boxOnChange($event.target.value, 'box4')" id="box3" formControlName="box3" style="margin-left: -10px; text-align: center; font-size: 18px;" class="mb-4 text-center" [ngClass]="{'form-control is-invalid': validation && first}" type="text" name="email" placeholder=""> 
+                </div>
+                <div class="col-md-2">
+                    <input (input)="boxOnChange($event.target.value, 'box5')" id="box4" formControlName="box4" style="margin-left: -10px; text-align: center; font-size: 18px;" class="mb-4 text-center" [ngClass]="{'form-control is-invalid': validation && first}" type="text" name="email" placeholder=""> 
+                </div>
+                <div class="col-md-2">
+                    <input (input)="boxOnChange($event.target.value, 'box6')" id="box5" formControlName="box5" style="margin-left: -10px; text-align: center; font-size: 18px;" class="mb-4 text-center" [ngClass]="{'form-control is-invalid': validation && first}" type="text" name="email" placeholder=""> 
+                </div>
+                <div class="col-md-2">
+                    <input (input)="boxOnChange($event.target.value, 'box6')" id="box6" formControlName="box6" style="margin-left: -10px; text-align: center; font-size: 18px;" class="mb-4 text-center" [ngClass]="{'form-control is-invalid': validation && first}" type="text" name="email" placeholder=""> 
+                </div>
+
+           </div>
+
+        </form>
+        
+    <div class="row px-3 mt-4"> 
+        <p class="text-danger" *ngIf="first && validation">{{ errMessage }}</p>
+        <!-- <label class="mb-1">
+        <p class="mb-0" style="color: #abacad; margin: -10px;">Password</p>
+        </label> <input class="mb-4" type="text" name="email" placeholder="Customize your domain name">  -->
+
+        <!-- <div class="placeholder" data-placeholder="/hrs">
+            <input value="My text" />  
+        </div> -->
+    </div>
+    
+   
+    <!-- <div class="row mb-3 px-3 mt-3"> <button type="submit" class="btn btn-blue text-center">Complete</button> </div> -->
+    
+</div>

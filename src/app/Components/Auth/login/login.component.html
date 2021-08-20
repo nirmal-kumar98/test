@@ -1,0 +1,70 @@
+<div>
+    <div class="border-0">
+        <div class="row d-flex">
+            <div class="col-lg-6">
+                <div class="card1 pb-5">
+                    <div class="row"> 
+                        <h6 class="logo"></h6>
+                        <!-- <img src="https://i.imgur.com/CXQmsmF.png" class="logo">  -->
+                    </div>
+                    <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src="assets/img/background.png" class="image"> </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="card2 card border-0 px-4 py-5">
+
+                    <div class="row mb-1 px-3" style="margin-left: -30px;">
+                        <h1 class="mb-0 mr-4 mt-2">Login to your app</h1>
+                    </div>
+                    
+                    <div class="row px-3 mb-4" style="margin-left: -30px;">
+                        <p style="color: #646566;">To make a workspace from scratch, please confirm your email address.</p>
+                    </div>
+
+                    <form [formGroup]="loginForm" (ngSubmit)="login()">
+
+                        <div class="row px-3 mt-4"> 
+                            <label class="mb-1">
+                                <p class="mb-0" style="color: #abacad; margin: -10px;">User Name</p>
+                            </label> <input formControlName="emailId" class="mb-4" type="email" name="email" placeholder="Enter your user name"> 
+                        </div>
+    
+                        <div class="row px-3"> 
+                            <label class="mb-1">
+                                <p class="mb-0" style="color: #abacad; margin: -10px;">Password</p>
+                            </label> <input formControlName="password" class="mb-4" type="password" name="email" placeholder="Enter your password"> 
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <mat-checkbox class="example-margin">Remind Me</mat-checkbox>
+                            </div>
+                            <div class="col-md-4">
+                                <p class="text-success" (click)="forgot()" style="cursor: pointer;">Forgot Password?</p>
+                            </div>
+                        </div>
+                                    
+                        <div class="row mb-3 px-3 mt-3"> 
+                            <button type="submit" class="btn btn-blue text-center">Sign In</button>
+                            <button type="button" (click)="register()" class="btn btn-blue text-center" style="margin-left: 10px;">Register</button> 
+                        </div>
+
+                        
+                    </form>
+                    
+                </div>
+                        
+            </div>
+        </div>
+        <!-- <div class="bg-blue py-4">
+            <div class="row px-3"> <small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2019. All rights reserved.</small>
+                <div class="social-contact ml-4 ml-sm-auto"> <span class="fa fa-facebook mr-4 text-sm"></span> <span class="fa fa-google-plus mr-4 text-sm"></span> <span class="fa fa-linkedin mr-4 text-sm"></span> <span class="fa fa-twitter mr-4 mr-sm-5 text-sm"></span> </div>
+            </div>
+        </div> -->
+    </div>
+</div>
+
+
+
+
+
