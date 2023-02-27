@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  backendURL: 'https://workspace2021.herokuapp.com',
+  backendURL: 'https://https://master.d3kosbi1avt4sq.amplifyapp.com/',
   // backendURL: 'http://localhost:5000'
 };
 
